@@ -7,7 +7,7 @@ using namespace std;
 
 extern enum IOWAY { File, Console };
 
-// Функция слияния двух множеств
+// Р¤СѓРЅРєС†РёСЏ СЃР»РёСЏРЅРёСЏ РґРІСѓС… РјРЅРѕР¶РµСЃС‚РІ
 set<int> Merge(set<int> lhs, const set<int>& rhs)
 {
 	for (const auto& item : rhs)
@@ -15,19 +15,19 @@ set<int> Merge(set<int> lhs, const set<int>& rhs)
 	return lhs;
 }
 
-// Функция получения корректных размеров (из файла/консоли)
+// Р¤СѓРЅРєС†РёСЏ РїРѕР»СѓС‡РµРЅРёСЏ РєРѕСЂСЂРµРєС‚РЅС‹С… СЂР°Р·РјРµСЂРѕРІ (РёР· С„Р°Р№Р»Р°/РєРѕРЅСЃРѕР»Рё)
 void GetRightSize(int& M, int& N, IOWAY Iway, ifstream& in)
 {
 	in >> M >> N;
 	if (Iway == Console) {
 		while (N < 1 || M < 1) {
-			cout << "Введены неверные данные, пожалуйста, повторите ввод\n";
+			cout << "Р’РІРµРґРµРЅС‹ РЅРµРІРµСЂРЅС‹Рµ РґР°РЅРЅС‹Рµ, РїРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ\n";
 			in >> M >> N;
 		}
 	}
 }
 
-// Считывание матрицы из файла/консоли
+// РЎС‡РёС‚С‹РІР°РЅРёРµ РјР°С‚СЂРёС†С‹ РёР· С„Р°Р№Р»Р°/РєРѕРЅСЃРѕР»Рё
 void GetMatrix(vector <vector<int>>& Matrix, int& M, int& N, ifstream& in)
 {
 	for (int i = 0; i < M; ++i)
@@ -35,11 +35,11 @@ void GetMatrix(vector <vector<int>>& Matrix, int& M, int& N, ifstream& in)
 			in >> Matrix[j][i];
 }
 
-// Вывод матрицы
+// Р’С‹РІРѕРґ РјР°С‚СЂРёС†С‹
 void PrintMatrix(const vector <vector<int>>& Matrix, int& M, int& N, ofstream& out)
 {
 	if (N == 0)
-		out << "Матрица пуста" << endl;
+		out << "РњР°С‚СЂРёС†Р° РїСѓСЃС‚Р°" << endl;
 	else
 		for (int i = 0; i < M; ++i) {
 			for (int j = 0; j < N; ++j) 
@@ -48,7 +48,7 @@ void PrintMatrix(const vector <vector<int>>& Matrix, int& M, int& N, ofstream& o
 		}
 }
 
-// Поиск индексов столбцов с минимальным элементом
+// РџРѕРёСЃРє РёРЅРґРµРєСЃРѕРІ СЃС‚РѕР»Р±С†РѕРІ СЃ РјРёРЅРёРјР°Р»СЊРЅС‹Рј СЌР»РµРјРµРЅС‚РѕРј
 set<int> GetMinIdx(const vector< vector<int>>& Matrix, int& M, int& N)
 {
 	int min = INT_MAX;
@@ -65,7 +65,7 @@ set<int> GetMinIdx(const vector< vector<int>>& Matrix, int& M, int& N)
 	return res;
 }
 
-// Поиск индексов столбцов с максимальным элементом
+// РџРѕРёСЃРє РёРЅРґРµРєСЃРѕРІ СЃС‚РѕР»Р±С†РѕРІ СЃ РјР°РєСЃРёРјР°Р»СЊРЅС‹Рј СЌР»РµРјРµРЅС‚РѕРј
 set<int> GetMaxIdx(const vector< vector<int>>& Matrix, int& M, int& N)
 {
 	int max = INT_MIN;
@@ -83,15 +83,15 @@ set<int> GetMaxIdx(const vector< vector<int>>& Matrix, int& M, int& N)
 	return res;
 }
 
-// Удаление столбцов с индексами из множества Idx
+// РЈРґР°Р»РµРЅРёРµ СЃС‚РѕР»Р±С†РѕРІ СЃ РёРЅРґРµРєСЃР°РјРё РёР· РјРЅРѕР¶РµСЃС‚РІР° Idx
 void ColumnDelete(vector< vector<int>>& Matrix, const set<int>& Idx)
 {
-	// Удаление столбцов, начиная с большего индекса
+	// РЈРґР°Р»РµРЅРёРµ СЃС‚РѕР»Р±С†РѕРІ, РЅР°С‡РёРЅР°СЏ СЃ Р±РѕР»СЊС€РµРіРѕ РёРЅРґРµРєСЃР°
 	for (auto item = Idx.rbegin(); item != Idx.rend(); ++item)
 		Matrix.erase(Matrix.begin() + *item);
 }
 
-// Добпвить первый столбец из произведений эл-ов соответствующих строк
+// Р”РѕР±РїРІРёС‚СЊ РїРµСЂРІС‹Р№ СЃС‚РѕР»Р±РµС† РёР· РїСЂРѕРёР·РІРµРґРµРЅРёР№ СЌР»-РѕРІ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёС… СЃС‚СЂРѕРє
 void AddFirstCol(vector< vector<int>>& Matrix, int& M, int& N)
 {
 	vector<int> FirstCol(M, 1);
@@ -102,12 +102,12 @@ void AddFirstCol(vector< vector<int>>& Matrix, int& M, int& N)
 	N++;
 }
 
-// Реализация задания
+// Р РµР°Р»РёР·Р°С†РёСЏ Р·Р°РґР°РЅРёСЏ
 void TaskRun(IOWAY Input, IOWAY Output)
 {
 	int N, M;
 
-	// Определение потоков ввода-вывода
+	// РћРїСЂРµРґРµР»РµРЅРёРµ РїРѕС‚РѕРєРѕРІ РІРІРѕРґР°-РІС‹РІРѕРґР°
 	ifstream in("CON");
 	ofstream out("CON");
 	if (Input == File)
@@ -116,12 +116,12 @@ void TaskRun(IOWAY Input, IOWAY Output)
 		out = ofstream("output.txt");
 
 	if (Input == Console)
-		cout << "Введите размеры матрицы - 2 числа M, N (больше 2)\n";
+		cout << "Р’РІРµРґРёС‚Рµ СЂР°Р·РјРµСЂС‹ РјР°С‚СЂРёС†С‹ - 2 С‡РёСЃР»Р° M, N (Р±РѕР»СЊС€Рµ 2)\n";
 	GetRightSize(M, N, Input, in);
 	
 	vector <vector <int>> matrix(N, vector<int>(M));
 	if (Input == Console)
-		cout << "Введите матрицу\n";
+		cout << "Р’РІРµРґРёС‚Рµ РјР°С‚СЂРёС†Сѓ\n";
 	GetMatrix(matrix, M, N, in);	
 
 	set<int> Idx = Merge(GetMinIdx(matrix, M, N), GetMaxIdx(matrix, M, N));
@@ -132,7 +132,7 @@ void TaskRun(IOWAY Input, IOWAY Output)
 		AddFirstCol(matrix, M, N);
 
 	PrintMatrix(matrix, M, N, out);
-	// Задержка для консоли
+	// Р—Р°РґРµСЂР¶РєР° РґР»СЏ РєРѕРЅСЃРѕР»Рё
 	if (Output == Console)
 		system("pause");
 	return;
