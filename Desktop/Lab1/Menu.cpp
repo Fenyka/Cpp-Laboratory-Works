@@ -1,4 +1,4 @@
-/* Реализация меню программы */
+/* Р РµР°Р»РёР·Р°С†РёСЏ РјРµРЅСЋ РїСЂРѕРіСЂР°РјРјС‹ */
 #include <iostream>
 #include <string>
 #include <set>
@@ -6,7 +6,7 @@
 
 using namespace std;
 
-// Преобразование строки к целому числу
+// РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ СЃС‚СЂРѕРєРё Рє С†РµР»РѕРјСѓ С‡РёСЃР»Сѓ
 int ValidSToI(const string& S)
 {
 	try {
@@ -14,55 +14,55 @@ int ValidSToI(const string& S)
 		return res;
 	}
 	catch (exception) {
-		return INT32_MIN;
+		return INT_MIN;
 	}
 }
 
-// Печать главного меню
+// РџРµС‡Р°С‚СЊ РіР»Р°РІРЅРѕРіРѕ РјРµРЅСЋ
 void PrintMainMenu()
 {
 	system("cls");
-	cout << "\tРабота с матрицами\n" <<
-		"1. Выбор способа ввода\n" <<
-		"2. Выбор способа вывода\n" <<
-		"3. Выполнение программы\n" <<
-		"0. Выход\n" << endl;
+	cout << "\tР Р°Р±РѕС‚Р° СЃ РјР°С‚СЂРёС†Р°РјРё\n" <<
+		"1. Р’С‹Р±РѕСЂ СЃРїРѕСЃРѕР±Р° РІРІРѕРґР°\n" <<
+		"2. Р’С‹Р±РѕСЂ СЃРїРѕСЃРѕР±Р° РІС‹РІРѕРґР°\n" <<
+		"3. Р’С‹РїРѕР»РЅРµРЅРёРµ РїСЂРѕРіСЂР°РјРјС‹\n" <<
+		"0. Р’С‹С…РѕРґ\n" << endl;
 }
 
-// Печать меню выбора способа ввода/вывода
+// РџРµС‡Р°С‚СЊ РјРµРЅСЋ РІС‹Р±РѕСЂР° СЃРїРѕСЃРѕР±Р° РІРІРѕРґР°/РІС‹РІРѕРґР°
 void PrintSubMenu(const string WayName)
 {
 	system("cls");
-	cout << "\tВыбор способа " << WayName << "a\n" <<
-		"1. Файл\n" <<
-		"2. Консоль\n" <<
-		"0. Вернуться в главное меню\n" << endl;
+	cout << "\tР’С‹Р±РѕСЂ СЃРїРѕСЃРѕР±Р° " << WayName << "a\n" <<
+		"1. Р¤Р°Р№Р»\n" <<
+		"2. РљРѕРЅСЃРѕР»СЊ\n" <<
+		"0. Р’РµСЂРЅСѓС‚СЊСЃСЏ РІ РіР»Р°РІРЅРѕРµ РјРµРЅСЋ\n" << endl;
 }
 
-// Перегрузка вывода для IOWAY
+// РџРµСЂРµРіСЂСѓР·РєР° РІС‹РІРѕРґР° РґР»СЏ IOWAY
 ostream& operator <<(ostream& out, const IOWAY& item)
 {
-	return out << ((item == File) ? "Файл" : "Консоль");
+	return out << ((item == File) ? "Р¤Р°Р№Р»" : "РљРѕРЅСЃРѕР»СЊ");
 }
 
-// Получение символа между left и right
+// РџРѕР»СѓС‡РµРЅРёРµ СЃРёРјРІРѕР»Р° РјРµР¶РґСѓ left Рё right
 int GetValidItem(const int left, const int right)
 {
 	string line;
 	int res;
 	do {
-		cout << "№ пункта: ";
+		cout << "в„– РїСѓРЅРєС‚Р°: ";
 		getline(cin, line);
 		res = ValidSToI(line);
 	} while (res < left || res > right);
 	return res;
 }
 
-// Функция изменения способа ввода/вывода
+// Р¤СѓРЅРєС†РёСЏ РёР·РјРµРЅРµРЅРёСЏ СЃРїРѕСЃРѕР±Р° РІРІРѕРґР°/РІС‹РІРѕРґР°
 void WayChange(IOWAY& item, const string WayName)
 {
 	PrintSubMenu(WayName);
-	cout << "Текущий способ: " << item << endl;
+	cout << "РўРµРєСѓС‰РёР№ СЃРїРѕСЃРѕР±: " << item << endl;
 	switch (GetValidItem(0, 2)) {
 	case 1:
 		item = File;
@@ -74,20 +74,20 @@ void WayChange(IOWAY& item, const string WayName)
 	return;
 }
 
-// Запуск главного меню
+// Р—Р°РїСѓСЃРє РіР»Р°РІРЅРѕРіРѕ РјРµРЅСЋ
 void RunMenu()
 {
 	IOWAY Input = File,
 		  Output = File;
 	while (true) {
 		PrintMainMenu();
-		cout << "Текущие параметры: ввод - " << Input << ", вывод - " << Output << endl;
+		cout << "РўРµРєСѓС‰РёРµ РїР°СЂР°РјРµС‚СЂС‹: РІРІРѕРґ - " << Input << ", РІС‹РІРѕРґ - " << Output << endl;
 		switch (GetValidItem(0, 3)) {
 		case 1:
-			WayChange(Input, "ввод");
+			WayChange(Input, "РІРІРѕРґ");
 			break;
 		case 2:
-			WayChange(Output, "вывод");
+			WayChange(Output, "РІС‹РІРѕРґ");
 			break;
 		case 3:
 			TaskRun(Input, Output);
