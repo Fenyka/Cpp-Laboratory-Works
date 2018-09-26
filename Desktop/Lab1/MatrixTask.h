@@ -1,4 +1,4 @@
-/* Заголовочный файл для MartixTask.cpp*/
+/* Р—Р°РіРѕР»РѕРІРѕС‡РЅС‹Р№ С„Р°Р№Р» РґР»СЏ MartixTask.cpp*/
 #pragma once
 
 enum IOWAY { File, Console };
