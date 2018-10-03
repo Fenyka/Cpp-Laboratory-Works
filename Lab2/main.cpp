@@ -1,8 +1,8 @@
-/* Создать класс Point для работы с точками на плоскости.Координаты точки декартовы.
-Обязательно должны быть реализованы : перемещение точки по оси X, перемещение пооси Y, 
-определение расстояния до начала координат, расстояния между двумя точками,
-преобразование в полярные координаты, сравнение на совпадение и несовпадение. 
-	Андреев С. */
+/* РЎРѕР·РґР°С‚СЊ РєР»Р°СЃСЃ Point РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ С‚РѕС‡РєР°РјРё РЅР° РїР»РѕСЃРєРѕСЃС‚Рё.РљРѕРѕСЂРґРёРЅР°С‚С‹ С‚РѕС‡РєРё РґРµРєР°СЂС‚РѕРІС‹.
+РћР±СЏР·Р°С‚РµР»СЊРЅРѕ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ СЂРµР°Р»РёР·РѕРІР°РЅС‹ : РїРµСЂРµРјРµС‰РµРЅРёРµ С‚РѕС‡РєРё РїРѕ РѕСЃРё X, РїРµСЂРµРјРµС‰РµРЅРёРµ РїРѕРѕСЃРё Y, 
+РѕРїСЂРµРґРµР»РµРЅРёРµ СЂР°СЃСЃС‚РѕСЏРЅРёСЏ РґРѕ РЅР°С‡Р°Р»Р° РєРѕРѕСЂРґРёРЅР°С‚, СЂР°СЃСЃС‚РѕСЏРЅРёСЏ РјРµР¶РґСѓ РґРІСѓРјСЏ С‚РѕС‡РєР°РјРё,
+РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РІ РїРѕР»СЏСЂРЅС‹Рµ РєРѕРѕСЂРґРёРЅР°С‚С‹, СЃСЂР°РІРЅРµРЅРёРµ РЅР° СЃРѕРІРїР°РґРµРЅРёРµ Рё РЅРµСЃРѕРІРїР°РґРµРЅРёРµ. 
+	РђРЅРґСЂРµРµРІ РЎ. */
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -15,7 +15,7 @@ ofstream out("output.txt");
 
 void NullConstructorTest()
 {
-	out << "• Тест простого контруктора: " << Point() << endl;
+	out << "вЂў РўРµСЃС‚ РїСЂРѕСЃС‚РѕРіРѕ РєРѕРЅС‚СЂСѓРєС‚РѕСЂР°: " << Point() << endl;
 }
 
 void ParametersConstructorTest()
@@ -25,7 +25,7 @@ void ParametersConstructorTest()
 	in.ignore(256, ':');
 	in >> x >> y;
 	a = Point(x, y);
-	out << "• Тест конструктора по параметрам: " << a << endl;
+	out << "вЂў РўРµСЃС‚ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° РїРѕ РїР°СЂР°РјРµС‚СЂР°Рј: " << a << endl;
 }
 
 void ToStringTest()
@@ -35,7 +35,7 @@ void ToStringTest()
 	in.ignore(256, ':');
 	in >> x >> y;
 	a = Point(x, y);
-	out << "• Тест метода ToString: " << a.ToString() << endl;
+	out << "вЂў РўРµСЃС‚ РјРµС‚РѕРґР° ToString: " << a.ToString() << endl;
 }
 
 void DistanseToZeroTest()
@@ -45,7 +45,7 @@ void DistanseToZeroTest()
 	in.ignore(256, ':');
 	in >> x >> y;
 	a = Point(x, y);
-	out << "• Тест метода DistanceToZero: " << a.DistanceToZero() << endl;
+	out << "вЂў РўРµСЃС‚ РјРµС‚РѕРґР° DistanceToZero: " << a.DistanceToZero() << endl;
 }
 
 void MoveTest()
@@ -57,7 +57,7 @@ void MoveTest()
 	a = Point(x, y);
 	b = Point(x, y);
 	in >> x >> y;
-	out << "• Тест методов MoveX, MoveY:" << endl << a << ":" << endl;
+	out << "вЂў РўРµСЃС‚ РјРµС‚РѕРґРѕРІ MoveX, MoveY:" << endl << a << ":" << endl;
 	a.MoveX(x);
 	b.MoveY(y);
 	out << "MoveX for " << x << " = " << a << endl;
@@ -73,7 +73,7 @@ void DistTest()
 	a = Point(x, y);
 	in >> x >> y;
 	b = Point(x, y);
-	out << "• Тест метода Dist: " << Point::Dist(a, b) << endl;
+	out << "вЂў РўРµСЃС‚ РјРµС‚РѕРґР° Dist: " << Point::Dist(a, b) << endl;
 }
 
 void ToPolarTest()
@@ -84,7 +84,7 @@ void ToPolarTest()
 	in >> x >> y;
 	a = Point(x, y);
 	auto Pa = a.ToPolar();
-	out << "• Тест метода ToPolar: R = " << Pa.first << ", alpha = " << Pa.second << endl;
+	out << "вЂў РўРµСЃС‚ РјРµС‚РѕРґР° ToPolar: R = " << Pa.first << ", alpha = " << Pa.second << endl;
 }
 
 void EqualTest()
@@ -96,15 +96,15 @@ void EqualTest()
 	a = Point(x, y);
 	in >> x >> y;
 	b = Point(x, y);
-	out << "• Тест метода Equal: " << Point::Equal(a, b) << endl;
+	out << "вЂў РўРµСЃС‚ РјРµС‚РѕРґР° Equal: " << Point::Equal(a, b) << endl;
 }
 
 void ReadDisplayTest()
 {
 	Point a;
-	cout << "Тест метода Read - введите 2 числа:" << endl;
+	cout << "РўРµСЃС‚ РјРµС‚РѕРґР° Read - РІРІРµРґРёС‚Рµ 2 С‡РёСЃР»Р°:" << endl;
 	a.Read();
-	cout << "Тест метода Display: "; 
+	cout << "РўРµСЃС‚ РјРµС‚РѕРґР° Display: "; 
 	a.Display(); 
 	cout << endl;
 }
@@ -121,7 +121,7 @@ int main()
 	DistTest();
 	ToPolarTest();
 	EqualTest();
-	cout << "Тесты, не требующие использования консоли, завершены. Результаты в файле output.txt" << endl;
+	cout << "РўРµСЃС‚С‹, РЅРµ С‚СЂРµР±СѓСЋС‰РёРµ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ РєРѕРЅСЃРѕР»Рё, Р·Р°РІРµСЂС€РµРЅС‹. Р РµР·СѓР»СЊС‚Р°С‚С‹ РІ С„Р°Р№Р»Рµ output.txt" << endl;
 	ReadDisplayTest();
 
 	system("pause");
