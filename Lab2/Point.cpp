@@ -1,29 +1,29 @@
-// Файл реализации класса Point
+// Р¤Р°Р№Р» СЂРµР°Р»РёР·Р°С†РёРё РєР»Р°СЃСЃР° Point
 #include <iostream>
 #include <string>
 #include "Point.h"
 
 using namespace std;
 
-// Ввод данных с клавиатуры
+// Р’РІРѕРґ РґР°РЅРЅС‹С… СЃ РєР»Р°РІРёР°С‚СѓСЂС‹
 void Point::Read()
 {
 	cin >> x >> y;
 }
 
-// Вывод данных на экран
+// Р’С‹РІРѕРґ РґР°РЅРЅС‹С… РЅР° СЌРєСЂР°РЅ
 void Point::Display()
 {
 	cout << "(" << x << ", " << y << ")";
 }
 
-// Преобразование к строке
+// РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ Рє СЃС‚СЂРѕРєРµ
 string Point::ToString()
 {
 	return "(" + to_string(x) + ", " + to_string(y) + ")";
 }
 
-// Движение точки
+// Р”РІРёР¶РµРЅРёРµ С‚РѕС‡РєРё
 void Point::MoveX(const double& px)
 {
 	x += px;
@@ -33,19 +33,19 @@ void Point::MoveY(const double &py)
 	y += py;
 }
 
-// Расстояние до начала координат
+// Р Р°СЃСЃС‚РѕСЏРЅРёРµ РґРѕ РЅР°С‡Р°Р»Р° РєРѕРѕСЂРґРёРЅР°С‚
 double Point::DistanceToZero()
 {
 	return sqrt(x * x + y * y);
 }
 
-// Расстояние между двумя точками
+// Р Р°СЃСЃС‚РѕСЏРЅРёРµ РјРµР¶РґСѓ РґРІСѓРјСЏ С‚РѕС‡РєР°РјРё
 double Point::Dist(const Point& P1, const Point& P2)
 {
 	return hypot(P1.x - P2.x, P1.y - P2.y);
 }
 
-// Преобразование в полярные координаты (пара R, Alpha)
+// РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РІ РїРѕР»СЏСЂРЅС‹Рµ РєРѕРѕСЂРґРёРЅР°С‚С‹ (РїР°СЂР° R, Alpha)
 pair <double, double> Point::ToPolar()
 {
 	pair <double, double> res;
@@ -54,26 +54,26 @@ pair <double, double> Point::ToPolar()
 	return res;
 }
 
-// Сравнение на совпадение
+// РЎСЂР°РІРЅРµРЅРёРµ РЅР° СЃРѕРІРїР°РґРµРЅРёРµ
 bool Point::Equal(const Point& P1, const Point& P2)
 {
-	// Сравнение вещественных координат с точностью eps = 1e-7
+	// РЎСЂР°РІРЅРµРЅРёРµ РІРµС‰РµСЃС‚РІРµРЅРЅС‹С… РєРѕРѕСЂРґРёРЅР°С‚ СЃ С‚РѕС‡РЅРѕСЃС‚СЊСЋ eps = 1e-7
 	return (abs(P1.x - P2.x) <= 1e-7 && abs(P1.y - P2.y) <= 1e-7);
 }
 
-// Перегрузка ввода
+// РџРµСЂРµРіСЂСѓР·РєР° РІРІРѕРґР°
 istream& operator >> (istream& in, Point& P)
 {
 	return in >> P.x >> P.y;
 }
 
-// Перегрузка вывода
+// РџРµСЂРµРіСЂСѓР·РєР° РІС‹РІРѕРґР°
 ostream& operator << (ostream& out, const Point& P)
 {
 	return out << "(" << P.x << ", " << P.y << ")";
 }
 
-// Перегрузка операторов сравнения ==, !=
+// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂРѕРІ СЃСЂР°РІРЅРµРЅРёСЏ ==, !=
 bool operator == (const Point& P1, const Point& P2)
 {
 	return (abs(P1.x - P2.x) <= 1e-7 && abs(P1.y - P2.y) <= 1e-7);
